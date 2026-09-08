@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { mockActivityLogs, mockStudents } from '../../../../data/mock';
+import EvidenceViewer from '../../../../components/supervisor/EvidenceViewer';
+import FeedbackForm from '../../../../components/supervisor/FeedbackForm';
 
 export default async function ActivityReviewPage({ 
   params 
@@ -59,7 +61,7 @@ export default async function ActivityReviewPage({
               </p>
             </div>
 
-            <div>
+            <div className="mb-8">
               <h3 className="text-sm font-bold text-slate-900 mb-2">Skills Applied</h3>
               <div className="flex flex-wrap gap-2">
                 {log.skillsAcquired.map(skill => (
@@ -69,6 +71,13 @@ export default async function ActivityReviewPage({
                 ))}
               </div>
             </div>
+
+            {/* Evidence Viewer Section */}
+            <div className="pt-6 border-t border-slate-100">
+              <h3 className="text-sm font-bold text-slate-900 mb-4">Evidence Attached</h3>
+              <EvidenceViewer urls={log.evidenceUrls} />
+            </div>
+
           </div>
         </div>
 
@@ -86,24 +95,8 @@ export default async function ActivityReviewPage({
             </div>
           </div>
 
-          {/* Supervisor Action Card */}
-          <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-            <h3 className="text-sm font-bold text-slate-900 mb-4">Supervisor Feedback</h3>
-            <textarea 
-              className="w-full border border-slate-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all mb-4"
-              rows={4}
-              placeholder="Leave constructive feedback for the student..."
-            ></textarea>
-            
-            <div className="flex flex-col gap-3">
-              <button className="w-full bg-teal-600 text-white font-medium py-2.5 rounded-lg hover:bg-teal-700 transition-colors">
-                Approve Activity
-              </button>
-              <button className="w-full bg-white border border-rose-200 text-rose-600 font-medium py-2.5 rounded-lg hover:bg-rose-50 transition-colors">
-                Request Revision
-              </button>
-            </div>
-          </div>
+          {/* Supervisor Action Card (Client Component) */}
+          <FeedbackForm />
 
         </div>
       </div>
