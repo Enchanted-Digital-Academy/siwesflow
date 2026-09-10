@@ -1,3 +1,5 @@
+import SchoolNavigation from "@/components/shared/SchoolNavigation";
+
 export default function SchoolDashboardPage() {
   return (
     <main className="min-h-screen bg-slate-50">
@@ -10,33 +12,7 @@ export default function SchoolDashboardPage() {
             </h1>
           </div>
 
-          <nav aria-label="School dashboard navigation">
-            <ul className="flex items-center gap-6 text-sm font-medium text-slate-600">
-              <li>
-                <a className="hover:text-slate-900" href="/school/dashboard">
-                  Dashboard
-                </a>
-              </li>
-              <li>
-                <a className="hover:text-slate-900" href="/school/students">
-                  Students
-                </a>
-              </li>
-              <li>
-                <a className="hover:text-slate-900" href="/school/placements">
-                  Placements
-                </a>
-              </li>
-              <li>
-                <a
-                  className="hover:text-slate-900"
-                  href="/school/activity-monitoring"
-                >
-                  Activity Monitoring
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <SchoolNavigation />
         </div>
       </header>
 
